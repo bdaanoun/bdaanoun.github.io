@@ -1,28 +1,75 @@
-// ─── Smooth Scrolling & Active Link Highlighting ──────────────────
+// ─── Elements ──────────────────────────────────────────────────
+const navLinks = Array.from(document.querySelectorAll(".nav-link"));
+const sections = navLinks
+  .map((a) => document.querySelector(a.getAttribute("href")))
+  .filter(Boolean);
+const navbar = document.querySelector(".navbar");
+const hamburger = document.getElementById("hamburger");
+const overlay = document.getElementById("navOverlay");
 
-const navLinks = document.querySelectorAll('.nav-link');
+// ─── Hamburger toggle ──────────────────────────────────────────
+function toggleMenu(forceClose) {
+  const shouldClose = forceClose === true || navbar.classList.contains("open");
 
-navLinks.forEach(link => {
-  link.addEventListener('click', function (e) {
-    // Update active state
-    navLinks.forEach(l => l.classList.remove('active'));
-    this.classList.add('active');
+  navbar.classList.toggle("open", !shouldClose);
+  overlay.classList.toggle("show", !shouldClose);
+  hamburger.setAttribute("aria-expanded", String(!shouldClose));
+  document.body.style.overflow = shouldClose ? "" : "hidden";
+}
 
-    // Smooth scroll to section
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+hamburger.addEventListener("click", () => toggleMenu());
+overlay.addEventListener("click", () => toggleMenu(true));
+
+// ─── Smooth scroll on click ───────────────────────────────────
+navLinks.forEach((link) => {
+  link.addEventListener("click", (e) => {
+    const target = document.querySelector(link.getAttribute("href"));
+    if (!target) return;
+
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+    // Close mobile menu if open
+    if (navbar.classList.contains("open")) toggleMenu(true);
   });
 });
 
-// ─── Nav Toggle (visual feedback only) ────────────────────────────
+// ─── Active link while scrolling ──────────────────────────────
+const setActive = (id) => {
+  navLinks.forEach((l) => {
+    const isMatch = l.getAttribute("href") === `#${id}`;
+    l.classList.toggle("active", isMatch);
+  });
+};
 
-const toggle = document.querySelector('.nav-toggle');
-let toggled = false;
+const io = new IntersectionObserver(
+  (entries) => {
+    const visible = entries
+      .filter((e) => e.isIntersecting)
+      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
-toggle.addEventListener('click', () => {
-  toggled = !toggled;
-  toggle.style.background = toggled ? '#f5e44e' : '#ffffff';
-});
+    if (visible?.target?.id) setActive(visible.target.id);
+  },
+  {
+    root: null,
+    threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
+  }
+);
+
+sections.forEach((s) => io.observe(s));
+
+// ─── Contact form (demo — no backend) ────────────────────────
+const form = document.getElementById("contactForm");
+const hint = document.getElementById("formHint");
+
+if (form) {
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    hint.textContent = "Message ready — connect this form to your backend/email service.";
+    form.reset();
+  });
+}
+
+// ─── Footer year ──────────────────────────────────────────────
+const year = document.getElementById("year");
+if (year) year.textContent = new Date().getFullYear();

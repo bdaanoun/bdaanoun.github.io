@@ -5,71 +5,259 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio — Code. Build. Scale.</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Outfit:wght@100..900&display=swap"
     rel="stylesheet" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-
-  <!-- <div class="outer"> -->
-  <div class="container">
+  <div class="container" id="top">
 
     <!-- NAVBAR -->
-    <nav class="navbar">
+    <nav class="navbar" aria-label="Primary">
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a class="logo" href="#top" aria-label="Go to top">
+        <img src="assets/logo.svg" alt="Logo">
+      </a>
+
       <div class="nav-pill">
-        <button class="nav-toggle" aria-label="Toggle menu"></button>
-        <a href="#about" class="nav-link active">About</a>
-        <a href="#skills" class="nav-link">Skills</a>
-        <a href="#projects" class="nav-link">Projects</a>
-        <a href="#contact" class="nav-link">Contact</a>
+        <div class="links">
+          <a href="#about" class="nav-link active">About</a>
+          <a href="#skills" class="nav-link">Skills</a>
+          <a href="#projects" class="nav-link">Projects</a>
+          <a href="#contact" class="nav-link contact">Contact</a>
+        </div>
       </div>
     </nav>
 
-    <!-- HERO -->
-    <section class="hero" id="about">
+    <div class="nav-overlay" id="navOverlay"></div>
+    <div class="status" aria-label="Availability">Available</div>
 
+    <!-- HERO / ABOUT -->
+    <header class="hero section" id="about">
       <div class="title-and-left-block">
-
-        <!-- Main title -->
         <h1 class="hero-title">CODE. BUILD. SCALE.</h1>
+        <p class="hero-subtitle">
+          Building scalable systems & real-time applications.
+        </p>
 
-        <!-- Left side decorative block -->
-        <div class="left-block">
-          <div class="img-placeholder" aria-label="Profile image placeholder">
-            <img src="/assets/letter.png" alt="letter">
-          </div>
-          <div class="yellow-card"></div>
+
+      </div>
+      <!-- Bottom right badge -->
+      <div class="badge" aria-label="Role badge">
+        <div class="badge-text">
+          <span class="badge-top">FULL-STACK</span>
+          <span class="badge-bottom">DEVELOPER</span>
+        </div>
+        <div class="avatar-placeholder" aria-label="Avatar">
+          <img src="assets/me.png" alt="Profile photo">
         </div>
       </div>
+    </header>
 
 
-    </section>
-    <!-- Bottom right badge -->
-    <div class="badge">
-      <div class="badge-text">
-        <span class="badge-top">FULL-STACK</span>
-        <span class="badge-bottom">DEVELOPER</span>
-      </div>
-      <div class="avatar-placeholder" aria-label="Avatar placeholder">
-        <span>AV</span>
-      </div>
-    </div>
-    <!-- </div> -->
+    <!-- MAIN CONTENT -->
+    <main class="content">
+
+      <!-- SKILLS -->
+      <section class="section" id="skills" aria-labelledby="skills-title">
+        <div class="section-head">
+          <h2 class="section-title" id="skills-title">Skills</h2>
+          <p class="section-subtitle">Tools I use to ship reliable products.</p>
+        </div>
+
+        <div class="grid skills-grid">
+          <article class="card">
+            <h3 class="card-title">Frontend</h3>
+            <ul class="tags" aria-label="Frontend skills">
+              <li class="tag">HTML</li>
+              <li class="tag">CSS</li>
+              <li class="tag">JavaScript</li>
+              <li class="tag">Angular</li>
+              <li class="tag">React</li>
+              <li class="tag">Next.js</li>
+              <li class="tag">Responsive UI</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Backend</h3>
+            <ul class="tags" aria-label="Backend skills">
+              <li class="tag">Node.js</li>
+              <li class="tag">Express</li>
+              <li class="tag">REST APIs</li>
+              <li class="tag">WebSockets</li>
+              <li class="tag">Auth (JWT)</li>
+              <li class="tag">Rate limiting</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">Database</h3>
+            <ul class="tags" aria-label="Database skills">
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">MongoDB</li>
+              <li class="tag">Redis</li>
+              <li class="tag">ORM/Query Builder</li>
+              <li class="tag">Indexes</li>
+            </ul>
+          </article>
+
+          <article class="card">
+            <h3 class="card-title">DevOps</h3>
+            <ul class="tags" aria-label="DevOps skills">
+              <li class="tag">Docker</li>
+              <li class="tag">Linux</li>
+              <li class="tag">Nginx</li>
+              <li class="tag">CI/CD</li>
+              <li class="tag">Monitoring</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section" id="projects" aria-labelledby="projects-title">
+        <div class="section-head">
+          <h2 class="section-title" id="projects-title">Projects</h2>
+          <p class="section-subtitle">A few things I built recently.</p>
+        </div>
+
+        <div class="grid projects-grid">
+          <article class="card project">
+            <div class="project-top">
+              <h3 class="card-title">Realtime Chat App</h3>
+              <span class="chip">WebSockets</span>
+            </div>
+            <p class="card-text">
+              Real-time messaging with rooms, typing indicators, message delivery, and basic moderation.
+            </p>
+            <ul class="tags">
+              <li class="tag">Node.js</li>
+              <li class="tag">Socket.io</li>
+              <li class="tag">Redis</li>
+              <li class="tag">Auth</li>
+            </ul>
+            <div class="card-actions">
+              <a class="link-btn" href="#" aria-label="View live demo (replace #)">Live</a>
+              <a class="link-btn" href="#" aria-label="View source code (replace #)">Code</a>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <h3 class="card-title">E-Commerce Store</h3>
+              <span class="chip">Full Stack</span>
+            </div>
+            <p class="card-text">
+              Product catalog, cart, checkout flow, admin dashboard, and order management.
+            </p>
+            <ul class="tags">
+              <li class="tag">React</li>
+              <li class="tag">API</li>
+              <li class="tag">PostgreSQL</li>
+              <li class="tag">Stripe</li>
+            </ul>
+            <div class="card-actions">
+              <a class="link-btn" href="#" aria-label="View live demo (replace #)">Live</a>
+              <a class="link-btn" href="#" aria-label="View source code (replace #)">Code</a>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-top">
+              <h3 class="card-title">Monitoring Dashboard</h3>
+              <span class="chip">DevOps</span>
+            </div>
+            <p class="card-text">
+              Service health, uptime tracking, and alerts with clean charts and status pages.
+            </p>
+            <ul class="tags">
+              <li class="tag">Docker</li>
+              <li class="tag">Nginx</li>
+              <li class="tag">Logs</li>
+              <li class="tag">Metrics</li>
+            </ul>
+            <div class="card-actions">
+              <a class="link-btn" href="#" aria-label="View live demo (replace #)">Live</a>
+              <a class="link-btn" href="#" aria-label="View source code (replace #)">Code</a>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact" aria-labelledby="contact-title">
+        <div class="section-head">
+          <h2 class="section-title" id="contact-title">Contact</h2>
+          <p class="section-subtitle">Let’s build something that actually ships.</p>
+        </div>
+
+        <div class="contact-wrap">
+          <article class="card contact-card">
+            <h3 class="card-title">Message</h3>
+
+            <form class="contact-form" id="contactForm">
+              <label class="field">
+                <span>Name</span>
+                <input type="text" name="name" placeholder="Your name" required />
+              </label>
+
+              <label class="field">
+                <span>Email</span>
+                <input type="email" name="email" placeholder="you@example.com" required />
+              </label>
+
+              <label class="field">
+                <span>Message</span>
+                <textarea name="message" rows="5" placeholder="What are you working on?" required></textarea>
+              </label>
+
+              <button class="btn primary" type="submit">Send</button>
+              <p class="form-hint" id="formHint" role="status" aria-live="polite"></p>
+            </form>
+          </article>
+
+          <aside class="card contact-card">
+            <h3 class="card-title">Details</h3>
+            <p class="card-text">Replace these with your real links.</p>
+
+            <div class="contact-list">
+              <a class="contact-item" href="mailto:your@email.com">
+                <span class="contact-label">Email</span>
+                <span class="contact-value">your@email.com</span>
+              </a>
+              <a class="contact-item" href="#" target="_blank" rel="noreferrer">
+                <span class="contact-label">GitHub</span>
+                <span class="contact-value">@yourhandle</span>
+              </a>
+              <a class="contact-item" href="#" target="_blank" rel="noreferrer">
+                <span class="contact-label">LinkedIn</span>
+                <span class="contact-value">/in/yourname</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>© <span id="year"></span> Portfolio. created by Bilal Daanouni</p>
+      </footer>
+    </main>
+
   </div>
 
-  <!-- Section stubs for smooth scroll targets -->
-  <section id="skills" style="height:0;visibility:hidden"></section>
-  <section id="projects" style="height:0;visibility:hidden"></section>
-  <section id="contact" style="height:0;visibility:hidden"></section>
-
-  <script src="app.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
