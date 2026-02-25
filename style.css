@@ -259,6 +259,39 @@ a {
   align-items: center;
 }
 
+.hero-name {
+  display: inline-block;
+  padding: 12px 28px;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.4));
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius-pill);
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #000;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transform: translateY(-10px);
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(-10px);
+  }
+
+  50% {
+    transform: translateY(-15px);
+  }
+
+
+  100% {
+    transform: translateY(-10px);
+  }
+}
+
 .hero-title {
   font-family: var(--font-display);
   font-size: clamp(48px, 6vw, 96px);

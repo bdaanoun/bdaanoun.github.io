@@ -58,15 +58,52 @@ const io = new IntersectionObserver(
 
 sections.forEach((s) => io.observe(s));
 
-// ─── Contact form (demo — no backend) ────────────────────────
+// ─── Contact form (EmailJS Integration) ─────────────────────────
 const form = document.getElementById("contactForm");
 const hint = document.getElementById("formHint");
 
+// EmailJS IDs (put your real ones here)
+const EMAILJS_SERVICE_ID = "service_k5ue7io";
+const EMAILJS_TEMPLATE_ID = "template_6tevt1i";
+
 if (form) {
-  form.addEventListener("submit", (e) => {
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    hint.textContent = "Message ready — connect this form to your backend/email service.";
-    form.reset();
+
+    hint.textContent = "Sending message...";
+    hint.style.color = "var(--text)";
+
+    const formData = new FormData(form);
+    const name = formData.get("name")?.toString().trim();
+    const email = formData.get("email")?.toString().trim();
+    const message = formData.get("message")?.toString().trim();
+
+    // Basic validation
+    if (!name || !email || !message) {
+      hint.textContent = "Please fill in all fields.";
+      hint.style.color = "#d32f2f";
+      return;
+    }
+
+    try {
+      await emailjs.send(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        {
+          from_name: name,
+          reply_to: email,
+          message: message,
+        }
+      );
+
+      hint.textContent = "Message sent successfully!";
+      hint.style.color = "#2e7d32";
+      form.reset();
+    } catch (error) {
+      console.error("EmailJS error:", error);
+      hint.textContent = "Failed to send message. Please try again later.";
+      hint.style.color = "#d32f2f";
+    }
   });
 }
 
