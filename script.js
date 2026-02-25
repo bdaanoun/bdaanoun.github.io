@@ -44,15 +44,14 @@ const setActive = (id) => {
 
 const io = new IntersectionObserver(
   (entries) => {
-    const visible = entries
-      .filter((e) => e.isIntersecting)
-      .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-    if (visible?.target?.id) setActive(visible.target.id);
+    entries.forEach((e) => {
+      if (e.isIntersecting) setActive(e.target.id);
+    });
   },
   {
     root: null,
-    threshold: [0.15, 0.25, 0.35, 0.5, 0.65],
+    rootMargin: "-20% 0px -70% 0px",
+    threshold: 0,
   }
 );
 
