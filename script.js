@@ -248,3 +248,154 @@ if (canvas) {
   initParticles();
   animate();
 }
+
+// ─── Project Filter ───────────────────────────────────────────
+(function initFilter() {
+  const filterBar = document.getElementById("filterBar");
+  if (!filterBar) return;
+
+  const buttons = filterBar.querySelectorAll(".filter-btn");
+  const projects = document.querySelectorAll(".project[data-category]");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      buttons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      const filter = btn.dataset.filter;
+
+      projects.forEach((p) => {
+        if (filter === "all" || p.dataset.category === filter) {
+          p.classList.remove("hidden");
+        } else {
+          p.classList.add("hidden");
+        }
+      });
+    });
+  });
+})();
+
+// ─── Image Carousels ──────────────────────────────────────────
+(function initCarousels() {
+  document.querySelectorAll(".carousel").forEach((carousel) => {
+    const track = carousel.querySelector(".carousel-track");
+    const images = track.querySelectorAll("img");
+    const prevBtn = carousel.querySelector(".carousel-prev");
+    const nextBtn = carousel.querySelector(".carousel-next");
+    const dotsWrap = carousel.querySelector(".carousel-dots");
+
+    if (!images.length) return;
+
+    let current = 0;
+
+    // Build dots
+    images.forEach((_, i) => {
+      const dot = document.createElement("button");
+      dot.className = "carousel-dot" + (i === 0 ? " active" : "");
+      dot.setAttribute("aria-label", `Go to image ${i + 1}`);
+      dot.addEventListener("click", () => goTo(i));
+      dotsWrap.appendChild(dot);
+    });
+
+    const dots = dotsWrap.querySelectorAll(".carousel-dot");
+
+    function goTo(index) {
+      if (index < 0) index = 0;
+      if (index >= images.length) index = images.length - 1;
+      current = index;
+      track.style.transform = `translateX(-${current * 100}%)`;
+
+      dots.forEach((d, i) => d.classList.toggle("active", i === current));
+      prevBtn.disabled = current === 0;
+      nextBtn.disabled = current === images.length - 1;
+    }
+
+    prevBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goTo(current - 1);
+    });
+    nextBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      goTo(current + 1);
+    });
+
+    // Click on image → open modal
+    images.forEach((img, i) => {
+      img.addEventListener("click", () => {
+        openModal(carousel, i);
+      });
+    });
+
+    goTo(0); // initialize
+  });
+})();
+
+// ─── Lightbox Modal ───────────────────────────────────────────
+const modalEl = document.getElementById("projectModal");
+const modalImage = document.getElementById("modalImage");
+const modalClose = document.getElementById("modalClose");
+const modalPrev = document.getElementById("modalPrev");
+const modalNext = document.getElementById("modalNext");
+const modalBackdrop = document.getElementById("modalBackdrop");
+const modalCounter = document.getElementById("modalCounter");
+
+let modalImages = [];
+let modalIndex = 0;
+
+function openModal(carousel, index) {
+  const imgs = carousel.querySelectorAll(".carousel-track img");
+  modalImages = Array.from(imgs).map((img) => img.src);
+  modalIndex = index;
+  updateModal();
+  modalEl.classList.add("open");
+  modalEl.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  modalEl.classList.remove("open");
+  modalEl.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+}
+
+function updateModal() {
+  modalImage.src = modalImages[modalIndex];
+  modalCounter.textContent = `${modalIndex + 1} / ${modalImages.length}`;
+  modalPrev.style.display = modalIndex <= 0 ? "none" : "";
+  modalNext.style.display = modalIndex >= modalImages.length - 1 ? "none" : "";
+}
+
+if (modalClose) modalClose.addEventListener("click", closeModal);
+if (modalBackdrop) modalBackdrop.addEventListener("click", closeModal);
+
+if (modalPrev) {
+  modalPrev.addEventListener("click", () => {
+    if (modalIndex > 0) {
+      modalIndex--;
+      updateModal();
+    }
+  });
+}
+
+if (modalNext) {
+  modalNext.addEventListener("click", () => {
+    if (modalIndex < modalImages.length - 1) {
+      modalIndex++;
+      updateModal();
+    }
+  });
+}
+
+document.addEventListener("keydown", (e) => {
+  if (!modalEl.classList.contains("open")) return;
+
+  if (e.key === "Escape") closeModal();
+  if (e.key === "ArrowLeft" && modalIndex > 0) {
+    modalIndex--;
+    updateModal();
+  }
+  if (e.key === "ArrowRight" && modalIndex < modalImages.length - 1) {
+    modalIndex++;
+    updateModal();
+  }
+});

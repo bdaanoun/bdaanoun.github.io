@@ -134,8 +134,30 @@
           <p class="section-subtitle">A few things I built recently.</p>
         </div>
 
+        <!-- Filter Bar -->
+        <div class="filter-bar" id="filterBar">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="full-stack">Full-Stack</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="systems">Systems</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+        </div>
+
         <div class="grid projects-grid">
-          <article class="card project" style="display: flex; flex-direction: column;">
+
+          <!-- ── Schrift ──────────────────────────────── -->
+          <article class="card project" data-category="full-stack">
+            <div class="carousel">
+              <div class="carousel-track">
+                <!-- Replace src with your own screenshot paths -->
+                <img src="assets/projects/schrift/schrift-1.png" alt="Schrift screenshot 1" />
+                <img src="assets/projects/schrift/schrift-2.png" alt="Schrift screenshot 2" />
+                <img src="assets/projects/schrift/schrift-3.png" alt="Schrift screenshot 3" />
+              </div>
+              <button class="carousel-arrow carousel-prev" aria-label="Previous image">‹</button>
+              <button class="carousel-arrow carousel-next" aria-label="Next image">›</button>
+              <div class="carousel-dots"></div>
+            </div>
             <div class="project-top">
               <h3 class="card-title">Schrift</h3>
               <span class="chip">Full-Stack</span>
@@ -151,18 +173,28 @@
               <li class="tag">REST API</li>
               <li class="tag">JWT</li>
             </ul>
-            <div class="card-actions" style="margin-top: auto; justify-content: flex-end;">
-              <a href="https://github.com/bdaanoun/01blog" aria-label="View source on GitHub" target="_blank"
-                style="color: var(--text); opacity: 0.8; transition: opacity 0.2s, transform 0.2s; display: inline-flex;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="transform: scale(1.1);">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            <div class="card-actions">
+              <a href="https://github.com/bdaanoun/01blog" aria-label="View source on GitHub" target="_blank" class="github-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
                 </svg>
               </a>
             </div>
           </article>
 
-          <article class="card project" style="display: flex; flex-direction: column;">
+          <!-- ── Bomberman DOM ────────────────────────── -->
+          <article class="card project" data-category="frontend">
+            <div class="carousel">
+              <div class="carousel-track">
+                <!-- Replace src with your own screenshot paths -->
+                <img src="assets/projects/bomberman.png" alt="Bomberman screenshot 1" />
+                <!-- <img src="assets/projects/bomberman-2.jpg" alt="Bomberman screenshot 2" />
+                <img src="assets/projects/bomberman-3.jpg" alt="Bomberman screenshot 3" /> -->
+              </div>
+              <button class="carousel-arrow carousel-prev" aria-label="Previous image">‹</button>
+              <button class="carousel-arrow carousel-next" aria-label="Next image">›</button>
+              <div class="carousel-dots"></div>
+            </div>
             <div class="project-top">
               <h3 class="card-title">Bomberman DOM</h3>
               <span class="chip">Frontend</span>
@@ -178,18 +210,26 @@
               <li class="tag">CSS3</li>
               <li class="tag">Game Logic</li>
             </ul>
-            <div class="card-actions" style="margin-top: auto; justify-content: flex-end;">
-              <a href="https://github.com/bdaanoun/bomberman-dom" aria-label="View source on GitHub" target="_blank"
-                style="color: var(--text); opacity: 0.8; transition: opacity 0.2s, transform 0.2s; display: inline-flex;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="transform: scale(1.1);">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            <div class="card-actions">
+              <a href="https://github.com/bdaanoun/bomberman-dom" aria-label="View source on GitHub" target="_blank" class="github-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
                 </svg>
               </a>
             </div>
           </article>
 
-          <article class="card project" style="display: flex; flex-direction: column;">
+          <!-- ── 0-Shell ──────────────────────────────── -->
+          <article class="card project" data-category="systems">
+            <div class="carousel">
+              <div class="carousel-track">
+                <!-- Replace src with your own screenshot paths -->
+                <img src="assets/projects/o-shell/0-shell.png" alt="0-Shell screenshot 1" />
+              </div>
+              <button class="carousel-arrow carousel-prev" aria-label="Previous image">‹</button>
+              <button class="carousel-arrow carousel-next" aria-label="Next image">›</button>
+              <div class="carousel-dots"></div>
+            </div>
             <div class="project-top">
               <h3 class="card-title">0-Shell</h3>
               <span class="chip">Systems</span>
@@ -204,18 +244,61 @@
               <li class="tag">Systems</li>
               <li class="tag">OS</li>
             </ul>
-            <div class="card-actions" style="margin-top: auto; justify-content: flex-end;">
-              <a href="https://github.com/bdaanoun/0-shell" aria-label="View source on GitHub" target="_blank"
-                style="color: var(--text); opacity: 0.8; transition: opacity 0.2s, transform 0.2s; display: inline-flex;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="transform: scale(1.1);">
-                  <path
-                    d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+            <div class="card-actions">
+              <a href="https://github.com/bdaanoun/0-shell" aria-label="View source on GitHub" target="_blank" class="github-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
                 </svg>
               </a>
             </div>
           </article>
+
+          <!-- ── java-LocalServer ─────────────────────── -->
+          <article class="card project" data-category="backend">
+            <div class="carousel">
+              <div class="carousel-track">
+                <!-- Replace src with your own screenshot paths -->
+                <img src="assets/projects/localserver/localserver.png" alt="java-LocalServer screenshot 1" />
+              </div>
+              <button class="carousel-arrow carousel-prev" aria-label="Previous image">‹</button>
+              <button class="carousel-arrow carousel-next" aria-label="Next image">›</button>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="project-top">
+              <h3 class="card-title">java-LocalServer</h3>
+              <span class="chip">Backend</span>
+            </div>
+            <p class="card-text">
+              A non-blocking HTTP/1.1 web server using Java NIO and event-driven architecture. Supports request parsing,
+              routing, file uploads, cookies, sessions, and CGI execution. Configurable via JSON and load-tested with Siege.
+            </p>
+            <ul class="tags">
+              <li class="tag">Java</li>
+              <li class="tag">NIO</li>
+              <li class="tag">HTTP Server</li>
+              <li class="tag">Event-Driven</li>
+            </ul>
+            <div class="card-actions">
+              <a href="https://github.com/bdaanoun/java-LocalServer" aria-label="View source on GitHub" target="_blank" class="github-link">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z" />
+                </svg>
+              </a>
+            </div>
+          </article>
+
         </div>
       </section>
+
+      <!-- PROJECT LIGHTBOX MODAL -->
+      <div class="project-modal" id="projectModal" aria-hidden="true">
+        <div class="modal-backdrop" id="modalBackdrop"></div>
+        <button class="modal-close" id="modalClose" aria-label="Close modal">×</button>
+        <button class="modal-arrow modal-prev" id="modalPrev" aria-label="Previous image">‹</button>
+        <img class="modal-image" id="modalImage" src="" alt="Project screenshot" />
+        <button class="modal-arrow modal-next" id="modalNext" aria-label="Next image">›</button>
+        <div class="modal-counter" id="modalCounter"></div>
+      </div>
 
       <!-- CONTACT -->
       <section class="section" id="contact" aria-labelledby="contact-title">
